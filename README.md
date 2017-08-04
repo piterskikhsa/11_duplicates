@@ -1,7 +1,21 @@
-# Anti-Duplicator
+# Поиск и удаление одинаковых файлов
+Скрипт принимает на вход папку, просматривает все файлы в ней (и всех подпапках) и сообщает, 
+если находит дубликаты. Дубликаты – это два файла с одинаковым именем и размером.
 
-[TODO. There will be project description]
+Выводит назване файла, пути к файлам и размер.
 
-# Project Goals
+# Как запустить
 
-The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
+Скрипт требует для своей работы установленного интерпретатора Python версии 3.5
+
+Запуск на Linux:
+
+```#!bash
+
+Укажите путь к коталогу: test
+qw.txt ['test/qw.txt', 'test/test/qw.txt'] 12
+
+```
+# Цели проекта
+
+Код создан в учебных целях. В рамках учебного курса по веб-разработке - [DEVMAN.org](https://devman.org)
