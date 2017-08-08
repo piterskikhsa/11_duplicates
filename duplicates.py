@@ -20,13 +20,14 @@ def get_files(path):
 def get_duplicates(files_dict):
     duplicates = {}
     for file_name, file_data in files_dict.items():
+        duplicates[file_name] = {}
         for file_size, file_path in file_data.items():
-            if len(file_path) >= 2:
-                duplicates[file_name] = file_data
+            if len(file_path) > 1:
+                duplicates[file_name][file_size] = file_path
     return duplicates
 
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) > 1:
         file_path = sys.argv[1]
     else:
@@ -39,14 +40,18 @@ if __name__ == '__main__':
             for duplicates_name, duplicates_data in all_duplicates.items():
                 for file_size, file_path in duplicates_data.items():
                     print("""
-Имя найденных дубликатов: {name}
-Размер: {size} байт
-Количество найденных дубликатов: {quantity}
-Пути к файлам: {file_path}""".format(name=duplicates_name, size=file_size,
-                                                     quantity=len(duplicates_data[file_size]),
-                                                     file_path=file_path))
+    Имя найденных дубликатов: {name}
+    Размер: {size} байт
+    Количество найденных дубликатов: {quantity}
+    Пути к файлам: {file_path}""".format(name=duplicates_name, size=file_size,
+                                         quantity=len(duplicates_data[file_size]),
+                                         file_path=file_path))
         else:
             print('Ура! Дублитов не обнаруженно')
     else:
         print(
             'Внимание: - Указанной папки не существует, проверьте правильность введенных данных, и попробуйте еще раз.')
+
+
+if __name__ == '__main__':
+    main()
